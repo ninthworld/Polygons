@@ -5,28 +5,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1eaa330b-9b19-403d-8209-ae8a01b47032" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/shader/postprocessing/fx.frag" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/shader/postprocessing/fx.vert" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/shader/skybox/skybox.frag" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/shader/skybox/skybox.vert" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/org/ninthworld/polygons/fbo/Fbo.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/org/ninthworld/polygons/fbo/FboManager.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/org/ninthworld/polygons/helper/TextureData.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/org/ninthworld/polygons/renderer/SkyboxRenderer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/org/ninthworld/polygons/shader/SkyboxShader.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/shader/normal/normal.frag" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/shader/normal/normal.vert" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/shader/water/water.frag" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/shader/water/water.vert" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/org/ninthworld/polygons/shader/FXShader.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/org/ninthworld/polygons/shader/NormalShader.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/org/ninthworld/polygons/shader/WaterShader.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Polygons/org/ninthworld/polygons/model/PineModel.class" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/org/ninthworld/polygons/model/PineModel.java" afterPath="$PROJECT_DIR$/src/org/ninthworld/polygons/terrain/TreeGenerator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Polygons/org/ninthworld/polygons/camera/Camera.class" afterPath="$PROJECT_DIR$/out/production/Polygons/org/ninthworld/polygons/camera/Camera.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Polygons/org/ninthworld/polygons/chunk/Chunk.class" afterPath="$PROJECT_DIR$/out/production/Polygons/org/ninthworld/polygons/chunk/Chunk.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Polygons/org/ninthworld/polygons/chunk/ChunkManager.class" afterPath="$PROJECT_DIR$/out/production/Polygons/org/ninthworld/polygons/chunk/ChunkManager.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Polygons/org/ninthworld/polygons/engine/Main.class" afterPath="$PROJECT_DIR$/out/production/Polygons/org/ninthworld/polygons/engine/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Polygons/org/ninthworld/polygons/loader/Loader.class" afterPath="$PROJECT_DIR$/out/production/Polygons/org/ninthworld/polygons/loader/Loader.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Polygons/org/ninthworld/polygons/fbo/FboManager.class" afterPath="$PROJECT_DIR$/out/production/Polygons/org/ninthworld/polygons/fbo/FboManager.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Polygons/org/ninthworld/polygons/model/ModelManager.class" afterPath="$PROJECT_DIR$/out/production/Polygons/org/ninthworld/polygons/model/ModelManager.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Polygons/org/ninthworld/polygons/renderer/ChunkRenderer.class" afterPath="$PROJECT_DIR$/out/production/Polygons/org/ninthworld/polygons/renderer/ChunkRenderer.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Polygons/org/ninthworld/polygons/renderer/RendererManager.class" afterPath="$PROJECT_DIR$/out/production/Polygons/org/ninthworld/polygons/renderer/RendererManager.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Polygons/org/ninthworld/polygons/shader/ShaderManager.class" afterPath="$PROJECT_DIR$/out/production/Polygons/org/ninthworld/polygons/shader/ShaderManager.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Polygons/org/ninthworld/polygons/terrain/TerrainGenerator.class" afterPath="$PROJECT_DIR$/out/production/Polygons/org/ninthworld/polygons/terrain/TerrainGenerator.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Polygons/shader/postprocessing/fx.frag" afterPath="$PROJECT_DIR$/out/production/Polygons/shader/postprocessing/fx.frag" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/shader/postprocessing/fx.frag" afterPath="$PROJECT_DIR$/res/shader/postprocessing/fx.frag" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/ninthworld/polygons/camera/Camera.java" afterPath="$PROJECT_DIR$/src/org/ninthworld/polygons/camera/Camera.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/ninthworld/polygons/chunk/Chunk.java" afterPath="$PROJECT_DIR$/src/org/ninthworld/polygons/chunk/Chunk.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/ninthworld/polygons/chunk/ChunkManager.java" afterPath="$PROJECT_DIR$/src/org/ninthworld/polygons/chunk/ChunkManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/ninthworld/polygons/engine/Main.java" afterPath="$PROJECT_DIR$/src/org/ninthworld/polygons/engine/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/ninthworld/polygons/loader/Loader.java" afterPath="$PROJECT_DIR$/src/org/ninthworld/polygons/loader/Loader.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/ninthworld/polygons/fbo/FboManager.java" afterPath="$PROJECT_DIR$/src/org/ninthworld/polygons/fbo/FboManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/ninthworld/polygons/model/ModelManager.java" afterPath="$PROJECT_DIR$/src/org/ninthworld/polygons/model/ModelManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/ninthworld/polygons/renderer/ChunkRenderer.java" afterPath="$PROJECT_DIR$/src/org/ninthworld/polygons/renderer/ChunkRenderer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/ninthworld/polygons/renderer/RendererManager.java" afterPath="$PROJECT_DIR$/src/org/ninthworld/polygons/renderer/RendererManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/ninthworld/polygons/shader/ShaderManager.java" afterPath="$PROJECT_DIR$/src/org/ninthworld/polygons/shader/ShaderManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/ninthworld/polygons/terrain/TerrainGenerator.java" afterPath="$PROJECT_DIR$/src/org/ninthworld/polygons/terrain/TerrainGenerator.java" />
     </list>
     <ignored path="RealEngine.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -47,43 +57,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="PineModel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/model/PineModel.java">
+      <file leaf-file-name="TreeGenerator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/terrain/TreeGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="31" column="35" lean-forward="false" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SkyboxRenderer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/renderer/SkyboxRenderer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+            <state relative-caret-position="204">
+              <caret line="16" column="59" lean-forward="false" selection-start-line="16" selection-start-column="59" selection-end-line="16" selection-end-column="59" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ShaderManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/shader/ShaderManager.java">
+      <file leaf-file-name="ModelShader.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/shader/ModelShader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="37" lean-forward="false" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
+            <state relative-caret-position="391">
+              <caret line="25" column="44" lean-forward="false" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RendererManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/renderer/RendererManager.java">
+      <file leaf-file-name="TerrainGenerator.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/terrain/TerrainGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="41" column="62" lean-forward="true" selection-start-line="41" selection-start-column="62" selection-end-line="41" selection-end-column="62" />
+            <state relative-caret-position="124">
+              <caret line="42" column="56" lean-forward="false" selection-start-line="42" selection-start-column="56" selection-end-line="42" selection-end-column="56" />
               <folding />
             </state>
           </provider>
@@ -92,8 +90,28 @@
       <file leaf-file-name="ChunkRenderer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/renderer/ChunkRenderer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="393">
-              <caret line="38" column="92" lean-forward="false" selection-start-line="38" selection-start-column="92" selection-end-line="38" selection-end-column="92" />
+            <state relative-caret-position="748">
+              <caret line="119" column="35" lean-forward="false" selection-start-line="119" selection-start-column="35" selection-end-line="119" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Chunk.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/chunk/Chunk.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="185" column="47" lean-forward="false" selection-start-line="185" selection-start-column="47" selection-end-line="185" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ChunkManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/chunk/ChunkManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="87" column="12" lean-forward="false" selection-start-line="87" selection-start-column="12" selection-end-line="87" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -102,63 +120,39 @@
       <file leaf-file-name="ModelManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/model/ModelManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#696#697#0" expanded="true" />
-                <element signature="e#736#737#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/engine/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="588">
-              <caret line="56" column="0" lean-forward="true" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FboManager.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/fbo/FboManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="23" column="4" lean-forward="false" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#767#768#0" expanded="true" />
-                <element signature="e#848#849#0" expanded="true" />
-                <element signature="e#894#895#0" expanded="true" />
-                <element signature="e#942#943#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fx.frag" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/shader/postprocessing/fx.frag">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+            <state relative-caret-position="132">
+              <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Fbo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/fbo/Fbo.java">
+      <file leaf-file-name="RendererManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/renderer/RendererManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="83" column="40" lean-forward="true" selection-start-line="83" selection-start-column="40" selection-end-line="83" selection-end-column="40" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="243">
+              <caret line="28" column="5" lean-forward="false" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="water.frag" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/shader/water/water.frag">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="19" lean-forward="false" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="water.vert" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/shader/water/water.vert">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="22" column="28" lean-forward="false" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -183,15 +177,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/engine/Manager.java" />
-        <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/terrain/TerrainManager.java" />
-        <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/manager/IManager.java" />
-        <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/engine/IManager.java" />
-        <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/renderer/RenderManger.java" />
-        <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/renderer/IRenderer.java" />
-        <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/shader/AShader.java" />
-        <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/shader/SimpleShader.java" />
-        <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/model/RawModel.java" />
         <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/loader/LoaderManager.java" />
         <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/renderer/SimpleRenderer.java" />
         <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/model/ChunkModel.java" />
@@ -213,12 +198,7 @@
         <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/model/PineModel.java" />
         <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/chunk/ChunkEntity.java" />
         <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/helper/MatrixHelper.java" />
-        <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/chunk/Chunk.java" />
-        <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/terrain/TerrainGenerator.java" />
-        <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/camera/Camera.java" />
-        <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/chunk/ChunkManager.java" />
         <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/shader/SkyboxShader.java" />
-        <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/shader/ShaderManager.java" />
         <option value="$PROJECT_DIR$/res/shader/skybox/skybox.vert" />
         <option value="$PROJECT_DIR$/res/shader/skybox/skybox.frag" />
         <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/renderer/ModelRenderer.java" />
@@ -226,14 +206,28 @@
         <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/helper/TextureData.java" />
         <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/loader/Loader.java" />
         <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/fbo/Fbo.java" />
-        <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/model/ModelManager.java" />
-        <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/renderer/RendererManager.java" />
         <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/display/DisplayManager.java" />
         <option value="$PROJECT_DIR$/res/shader/postprocessing/fx.vert" />
-        <option value="$PROJECT_DIR$/res/shader/postprocessing/fx.frag" />
-        <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/engine/Main.java" />
-        <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/renderer/ChunkRenderer.java" />
+        <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/renderer/FXRenderer.java" />
+        <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/shader/NormalFXShader.java" />
+        <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/shader/NormalShader.java" />
+        <option value="$PROJECT_DIR$/res/shader/normal/normal.frag" />
+        <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/shader/ShaderManager.java" />
+        <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/renderer/RendererManager.java" />
+        <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/shader/FXShader.java" />
+        <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/camera/Camera.java" />
         <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/fbo/FboManager.java" />
+        <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/chunk/ChunkManager.java" />
+        <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/engine/Main.java" />
+        <option value="$PROJECT_DIR$/res/shader/postprocessing/fx.frag" />
+        <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/shader/WaterShader.java" />
+        <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/renderer/ChunkRenderer.java" />
+        <option value="$PROJECT_DIR$/res/shader/water/water.frag" />
+        <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/chunk/Chunk.java" />
+        <option value="$PROJECT_DIR$/res/shader/water/water.vert" />
+        <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/terrain/TreeGenerator.java" />
+        <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/model/ModelManager.java" />
+        <option value="$PROJECT_DIR$/src/org/ninthworld/polygons/terrain/TerrainGenerator.java" />
       </list>
     </option>
   </component>
@@ -247,8 +241,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -266,6 +260,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
@@ -554,6 +549,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="water" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Polygons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Polygons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shader" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="skybox" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -577,6 +594,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="postprocessing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Polygons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Polygons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shader" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="normal" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -626,13 +665,12 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Documents/MEGA/Projects/GitHubProjects/GreedyMeshing" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -650,11 +688,11 @@
       <recent name="org.ninthworld.realengine.render" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\theni_000\Desktop\GitHubProjects\Polygons\res\shader" />
+      <recent name="C:\Users\theni_000\Desktop\GitHubProjects\Polygons\res\shader\normal" />
       <recent name="D:\MEGA\Projects\GitHubProjects\Polygons\res\shader" />
       <recent name="D:\MEGA\Projects\IdeaProjects\Polygons\res\shader" />
       <recent name="D:\MEGA\Projects\IdeaProjects\Polygons\res\shader\chunk" />
-      <recent name="D:\MEGA\Projects\IdeaProjects\Polygons\res\shader\simple" />
-      <recent name="D:\MEGA\Projects\IdeaProjects\RealEngine\res\shader\terrain" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -931,30 +969,29 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329653" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1448203" sideWeight="0.50208336" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10887949" sideWeight="0.49791667" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17507887" sideWeight="0.49791667" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.165625" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20058565" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26004228" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25867507" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -984,21 +1021,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/shader/ShaderManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/shader/terrain/terrain.frag" />
-    <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/terrain/TerrainChunk.java" />
-    <entry file="file://$PROJECT_DIR$/res/shader/terrain/terrain.vert" />
-    <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/model/TextureData.java" />
-    <entry file="file://$PROJECT_DIR$/res/shader/terrain/terrain.frag" />
-    <entry file="file://$PROJECT_DIR$/res/shader/simple/simple.vert" />
-    <entry file="file://$PROJECT_DIR$/res/shader/simple/simple.frag" />
-    <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/shader/TerrainShader.java" />
     <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/render/TerrainRender.java" />
     <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/engine/Manager.java" />
     <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/renderer/IRenderer.java">
@@ -1023,11 +1045,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="30" column="26" lean-forward="true" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#523#524#0" expanded="false" />
-            <element signature="e#557#558#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1035,14 +1052,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="40" lean-forward="true" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/shader/ChunkShader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1076,27 +1085,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/shader/chunk/chunk.frag">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="34" lean-forward="false" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/shader/ModelShader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="25" column="44" lean-forward="true" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/helper/ModelHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="298">
           <caret line="56" column="49" lean-forward="true" selection-start-line="56" selection-start-column="49" selection-end-line="56" selection-end-column="49" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1105,24 +1099,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="41" lean-forward="false" selection-start-line="12" selection-start-column="41" selection-end-line="12" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/chunk/ChunkEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
-          <folding>
-            <element signature="e#403#404#0" expanded="false" />
-            <element signature="e#438#439#0" expanded="false" />
-            <element signature="e#494#495#0" expanded="false" />
-            <element signature="e#542#543#0" expanded="false" />
-            <element signature="e#579#580#0" expanded="false" />
-            <element signature="e#610#611#0" expanded="false" />
-            <element signature="e#660#661#0" expanded="false" />
-            <element signature="e#700#701#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1134,50 +1110,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/terrain/TerrainGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="16" column="42" lean-forward="false" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/camera/Camera.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="26" column="24" lean-forward="false" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
-          <folding>
-            <element signature="e#701#702#0" expanded="true" />
-            <element signature="e#732#733#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/chunk/Chunk.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/chunk/ChunkManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="66" column="9" lean-forward="false" selection-start-line="66" selection-start-column="9" selection-end-line="66" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/shader/SkyboxShader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="16" lean-forward="false" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
           <folding>
-            <element signature="e#416#417#0" expanded="true" />
-            <element signature="e#466#467#0" expanded="true" />
+            <element signature="e#416#417#0" expanded="false" />
+            <element signature="e#466#467#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1194,7 +1133,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1202,7 +1140,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1210,7 +1147,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="1" lean-forward="false" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1246,6 +1182,64 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/renderer/SkyboxRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/renderer/FXRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="582">
+          <caret line="56" column="33" lean-forward="false" selection-start-line="56" selection-start-column="33" selection-end-line="56" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/fbo/Fbo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="473">
+          <caret line="89" column="28" lean-forward="true" selection-start-line="89" selection-start-column="28" selection-end-line="89" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/shader/NormalFXShader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="14" column="36" lean-forward="true" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/shader/normal/normal.frag">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="92" lean-forward="false" selection-start-line="10" selection-start-column="92" selection-end-line="10" selection-end-column="92" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/shader/NormalShader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="36" lean-forward="true" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/shader/ChunkShader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/res/shader/postprocessing/fx.vert">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -1254,99 +1248,176 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/shader/postprocessing/fx.frag">
+    <entry file="file://$PROJECT_DIR$/res/shader/stencil/stencil.frag">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/model/ModelManager.java">
+    <entry file="file://$PROJECT_DIR$/res/shader/chunk/chunk.frag">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#696#697#0" expanded="true" />
-            <element signature="e#736#737#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="204">
+          <caret line="12" column="34" lean-forward="false" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/renderer/RendererManager.java">
+    <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/chunk/ChunkEntity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="41" column="62" lean-forward="true" selection-start-line="41" selection-start-column="62" selection-end-line="41" selection-end-column="62" />
+        <state relative-caret-position="255">
+          <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/shader/ShaderManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="37" lean-forward="false" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
+        <state relative-caret-position="259">
+          <caret line="27" column="86" lean-forward="false" selection-start-line="27" selection-start-column="86" selection-end-line="27" selection-end-column="86" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/shader/FXShader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="438">
+          <caret line="46" column="51" lean-forward="false" selection-start-line="46" selection-start-column="51" selection-end-line="46" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1599#1600#0" expanded="true" />
+            <element signature="e#1658#1659#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/camera/Camera.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="34" column="40" lean-forward="true" selection-start-line="34" selection-start-column="40" selection-end-line="34" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/fbo/Fbo.java">
+    <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/fbo/FboManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="83" column="40" lean-forward="true" selection-start-line="83" selection-start-column="40" selection-end-line="83" selection-end-column="40" />
+        <state relative-caret-position="21">
+          <caret line="44" column="33" lean-forward="false" selection-start-line="44" selection-start-column="33" selection-end-line="44" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/model/PineModel.java">
+    <entry file="file://$PROJECT_DIR$/res/shader/postprocessing/fx.frag">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="31" column="35" lean-forward="false" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
+        <state relative-caret-position="183">
+          <caret line="63" column="0" lean-forward="true" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/shader/WaterShader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="26" column="44" lean-forward="true" selection-start-line="26" selection-start-column="44" selection-end-line="26" selection-end-column="44" />
+          <folding>
+            <element signature="e#1035#1036#0" expanded="true" />
+            <element signature="e#1089#1090#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/engine/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="53" column="35" lean-forward="false" selection-start-line="53" selection-start-column="35" selection-end-line="53" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/renderer/SkyboxRenderer.java">
+    <entry file="file://$PROJECT_DIR$/res/shader/water/water.frag">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+        <state relative-caret-position="102">
+          <caret line="6" column="19" lean-forward="false" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/chunk/ChunkManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="87" column="12" lean-forward="false" selection-start-line="87" selection-start-column="12" selection-end-line="87" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/renderer/RendererManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="28" column="5" lean-forward="false" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/renderer/ChunkRenderer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="38" column="92" lean-forward="false" selection-start-line="38" selection-start-column="92" selection-end-line="38" selection-end-column="92" />
+        <state relative-caret-position="748">
+          <caret line="119" column="35" lean-forward="false" selection-start-line="119" selection-start-column="35" selection-end-line="119" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/engine/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/chunk/Chunk.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="588">
-          <caret line="56" column="0" lean-forward="true" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="330">
+          <caret line="185" column="47" lean-forward="false" selection-start-line="185" selection-start-column="47" selection-end-line="185" selection-end-column="47" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/fbo/FboManager.java">
+    <entry file="file://$PROJECT_DIR$/res/shader/water/water.vert">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="23" column="4" lean-forward="false" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#767#768#0" expanded="true" />
-            <element signature="e#848#849#0" expanded="true" />
-            <element signature="e#894#895#0" expanded="true" />
-            <element signature="e#942#943#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="374">
+          <caret line="22" column="28" lean-forward="false" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/terrain/TreeGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="16" column="59" lean-forward="false" selection-start-line="16" selection-start-column="59" selection-end-line="16" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/shader/ModelShader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="25" column="44" lean-forward="false" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/model/ModelManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/ninthworld/polygons/terrain/TerrainGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="42" column="56" lean-forward="false" selection-start-line="42" selection-start-column="56" selection-end-line="42" selection-end-column="56" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -84,6 +84,14 @@ public class ChunkManager implements IManager {
             loadedChunks.remove(chunk.getChunkPos().toHashString());
             chunk.cleanUp();
         }
+
+        if(!camera.isFreemode) {
+            float height = (float) terrainGenerator.getHeightAt(camera.getPosition().x, camera.getPosition().z) + 0.8f;
+            if (camera.getPosition().y < height) {
+                camera.getPosition().setY(height);
+                camera.onGround = true;
+            }
+        }
     }
 
     @Override

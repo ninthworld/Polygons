@@ -18,45 +18,99 @@ public class Camera {
     private Vector3f position;
     private Vector3f rotation;
 
+    public boolean onGround;
+    private float velocity, gravity;
+
+    public boolean isFreemode, isntFreemode;
+    public boolean isWireframe, isntWireframe;
+
     public Camera(Vector3f position, Vector3f rotation){
         this.position = position;
         this.rotation = rotation;
+        velocity = 0.0f;
+        gravity = -0.05f;
+        onGround = false;
+
+        isWireframe = !(isntWireframe = true);
+        isFreemode = !(isntFreemode = true);
+    }
+
+    public void debugKeyboard(){
+        if(Keyboard.isKeyDown(Keyboard.KEY_1)){
+            if(isWireframe){
+                isntWireframe = true;
+            }else{
+                isntWireframe = false;
+            }
+        }else{
+            if(isWireframe == isntWireframe){
+                isWireframe = !isntWireframe;
+            }
+        }
+
+        if(Keyboard.isKeyDown(Keyboard.KEY_2)){
+            if(isFreemode){
+                isntFreemode = true;
+            }else{
+                isntFreemode = false;
+            }
+        }else{
+            if(isFreemode == isntFreemode){
+                isFreemode = !isntFreemode;
+            }
+        }
+
     }
 
     public Vector3f getPosition(){
         return position;
     }
 
-    public void updateKeyboard(){
+    public void updateKeyboard() {
         float sinYaw = (float) Math.sin(rotation.y);
         float cosYaw = (float) Math.cos(rotation.y);
 
-        if(Keyboard.isKeyDown(Keyboard.KEY_W)){
+        if (Keyboard.isKeyDown(Keyboard.KEY_W)) {
             position.x += sinYaw * moveSpeed;
             position.z += -cosYaw * moveSpeed;
         }
 
-        if(Keyboard.isKeyDown(Keyboard.KEY_S)){
+        if (Keyboard.isKeyDown(Keyboard.KEY_S)) {
             position.x += -sinYaw * moveSpeed;
             position.z += cosYaw * moveSpeed;
         }
 
-        if(Keyboard.isKeyDown(Keyboard.KEY_D)){
+        if (Keyboard.isKeyDown(Keyboard.KEY_D)) {
             position.x += cosYaw * moveSpeed;
             position.z += sinYaw * moveSpeed;
         }
 
-        if(Keyboard.isKeyDown(Keyboard.KEY_A)){
+        if (Keyboard.isKeyDown(Keyboard.KEY_A)) {
             position.x += -cosYaw * moveSpeed;
             position.z += -sinYaw * moveSpeed;
         }
 
-        if(Keyboard.isKeyDown(Keyboard.KEY_SPACE)){
-            position.y += moveSpeed;
-        }
+        if (isFreemode){
+            if (Keyboard.isKeyDown(Keyboard.KEY_SPACE)) {
+                position.y += moveSpeed;
+            }
 
-        if(Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)){
-            position.y += -moveSpeed;
+            if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)) {
+                position.y += -moveSpeed;
+            }
+        }else{
+            if (Keyboard.isKeyDown(Keyboard.KEY_SPACE) && onGround) {
+                onGround = false;
+                velocity = 0.8f;
+            }
+
+            if (velocity < -1.0f) {
+                velocity = -1.0f;
+            } else {
+                velocity += gravity;
+            }
+
+            position.y += velocity;
         }
     }
 

@@ -1,5 +1,6 @@
 package org.ninthworld.polygons.terrain;
 
+import org.ninthworld.polygons.chunk.Chunk;
 import org.ninthworld.polygons.helper.SimplexNoiseOctave;
 import org.ninthworld.polygons.model.ModelManager;
 
@@ -33,11 +34,17 @@ public class TerrainGenerator {
     public String getEntityAt(double x, double y){
 
         double biome = sumOctave(noise[0], 16, x, y, 0.05, 0.003, 0.0, 1.0);
-
         double entityChance = sumOctave(noise[4], 8, x, y, 0.9, 1, 0.0, 1.0);
+        double height = getHeightAt(x, y);
 
-        if(biome > 0.5 && entityChance > 0.65){
-            return ModelManager.PINE_TREE;
+        if(height > Chunk.WATER_LEVEL) {
+            if (biome > 0.5 && entityChance > 0.65 && height < 40) {
+                return ModelManager.PINE_TREE;
+            } else if (biome > 0.3 && entityChance > 0.7) {
+                return ModelManager.REDWOOD_TREE;
+            } else {
+                return null;
+            }
         }else{
             return null;
         }

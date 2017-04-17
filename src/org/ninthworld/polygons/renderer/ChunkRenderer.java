@@ -14,6 +14,8 @@ import org.ninthworld.polygons.model.ModelManager;
 import org.ninthworld.polygons.model.RawModel;
 import org.ninthworld.polygons.shader.ChunkShader;
 import org.ninthworld.polygons.shader.ModelShader;
+import org.ninthworld.polygons.shader.NormalShader;
+import org.ninthworld.polygons.shader.WaterShader;
 
 /**
  * Created by NinthWorld on 3/3/2017.
@@ -22,10 +24,14 @@ public class ChunkRenderer implements IRenderer {
 
     private ChunkShader chunkShader;
     private ModelShader modelShader;
+    private NormalShader normalShader;
+    private WaterShader waterShader;
 
-    public ChunkRenderer(Matrix4f projectionMatrix, ChunkShader chunkShader, ModelShader modelShader){
+    public ChunkRenderer(Matrix4f projectionMatrix, ChunkShader chunkShader, ModelShader modelShader, NormalShader normalShader, WaterShader waterShader){
         this.chunkShader = chunkShader;
         this.modelShader = modelShader;
+        this.normalShader = normalShader;
+        this.waterShader = waterShader;
 
         chunkShader.start();
         chunkShader.loadProjectionMatrix(projectionMatrix);
@@ -34,12 +40,17 @@ public class ChunkRenderer implements IRenderer {
         modelShader.start();
         modelShader.loadProjectionMatrix(projectionMatrix);
         modelShader.stop();
+
+        normalShader.start();
+        normalShader.loadProjectionMatrix(projectionMatrix);
+        normalShader.stop();
+
+        waterShader.start();
+        waterShader.loadProjectionMatrix(projectionMatrix);
+        waterShader.stop();
     }
 
-    public void render(ChunkManager chunkManager, ModelManager modelManager, Camera camera){
-        chunkShader.start();
-        chunkShader.loadViewMatrix(camera.getViewMatrix());
-
+    private void drawChunks(ChunkManager chunkManager) {
         for(Chunk chunk : chunkManager.loadedChunks.values()){
             if(chunk.getRawModel() != null) {
                 chunkShader.loadTransformationMatrix(MatrixHelper.createTransformationMatrix(chunk.getChunkPos().getTransformationVector(), new Vector3f(0, 0, 0), 1));
@@ -49,12 +60,9 @@ public class ChunkRenderer implements IRenderer {
                 unbindRawModel();
             }
         }
+    }
 
-        chunkShader.stop();
-
-        modelShader.start();
-        modelShader.loadViewMatrix(camera.getViewMatrix());
-
+    private void drawModels(ChunkManager chunkManager, ModelManager modelManager) {
         for(RawModel rawModel : modelManager.models.values()){
             prepareRawModel(rawModel);
 
@@ -72,11 +80,57 @@ public class ChunkRenderer implements IRenderer {
                     }
                 }
             }
-
             unbindRawModel();
         }
+    }
 
+    private void drawWaters(ChunkManager chunkManager){
+        for(Chunk chunk : chunkManager.loadedChunks.values()){
+            if(chunk.getWaterRawModel() != null) {
+                waterShader.loadTransformationMatrix(MatrixHelper.createTransformationMatrix(chunk.getChunkPos().getTransformationVector(), new Vector3f(0, 0, 0), 1));
+
+                prepareRawModel(chunk.getWaterRawModel());
+                GL11.glDrawElements(GL11.GL_TRIANGLES, chunk.getWaterRawModel().getVertexCount(), GL11.GL_UNSIGNED_INT, 0);
+                unbindRawModel();
+            }
+        }
+    }
+
+    public void render(ChunkManager chunkManager, ModelManager modelManager, Camera camera){
+        chunkShader.start();
+        chunkShader.loadViewMatrix(camera.getViewMatrix());
+        drawChunks(chunkManager);
+        chunkShader.stop();
+
+        modelShader.start();
+        modelShader.loadViewMatrix(camera.getViewMatrix());
+        drawModels(chunkManager, modelManager);
         modelShader.stop();
+
+        GL11.glEnable(GL11.GL_BLEND);
+        GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+        renderWater(chunkManager, camera);
+        GL11.glDisable(GL11.GL_BLEND);
+    }
+
+    private float clock = 0f;
+    public void renderWater(ChunkManager chunkManager, Camera camera){
+        waterShader.start();
+        waterShader.loadViewMatrix(camera.getViewMatrix());
+        waterShader.loadClock(clock);
+        drawWaters(chunkManager);
+        waterShader.stop();
+
+        clock += 0.01f;
+        if(clock >= 1f) clock = 0f;
+    }
+
+    public void renderNormal(ChunkManager chunkManager, ModelManager modelManager, Camera camera){
+        normalShader.start();
+        normalShader.loadViewMatrix(camera.getViewMatrix());
+        drawChunks(chunkManager);
+        drawModels(chunkManager, modelManager);
+        normalShader.stop();
     }
 
     @Override

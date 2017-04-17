@@ -19,10 +19,13 @@ public class Chunk {
 
     public static final int SEED = 12345;
     public static final int CHUNK_SIZE = 16;
+    public static final float WATER_LEVEL = 16f;
 
     private Vector2i chunkPos;
     private double[][] heightData;
     private RawModel rawModel;
+
+    private RawModel waterRawModel;
 
     public List<ChunkEntity> entities;
 
@@ -30,11 +33,16 @@ public class Chunk {
         this.chunkPos = chunkPos;
         this.heightData = new double[CHUNK_SIZE][CHUNK_SIZE];
         this.rawModel = null;
+        this.waterRawModel = null;
         this.entities = new ArrayList<>();
     }
 
     public RawModel getRawModel(){
         return rawModel;
+    }
+
+    public RawModel getWaterRawModel(){
+        return waterRawModel;
     }
 
     public Vector2i getChunkPos(){
@@ -59,6 +67,7 @@ public class Chunk {
 
     public void cleanUp(){
         if(rawModel != null) rawModel.cleanUp();
+        if(waterRawModel != null) waterRawModel.cleanUp();
     }
 
     public void generateChunkData(TerrainGenerator terrainGenerator){
@@ -131,13 +140,13 @@ public class Chunk {
 
                 float angle = 0.6f;
 
-                if(Vector3f.dot(normal1, new Vector3f(0, 1, 0)) > angle){
+                if(Vector3f.dot(normal1, new Vector3f(0, 1, 0)) > angle && heightData[x][y] > WATER_LEVEL){
                     modelHelper.addTriangle(vertices[2], vertices[1], vertices[0], colors[2], colors[1], colors[0]);
                 }else{
                     modelHelper.addTriangle(vertices[2], vertices[1], vertices[0], colorSteep);
                 }
 
-                if(Vector3f.dot(normal2, new Vector3f(0, 1, 0)) > angle) {
+                if(Vector3f.dot(normal2, new Vector3f(0, 1, 0)) > angle && heightData[x][y] > WATER_LEVEL) {
                     modelHelper.addTriangle(vertices[1], vertices[2], vertices[3], colors[1], colors[2], colors[3]);
                 }else{
                     modelHelper.addTriangle(vertices[1], vertices[2], vertices[3], colorSteep);
@@ -146,6 +155,42 @@ public class Chunk {
         }
 
         rawModel = modelHelper.generateRawModel();
+
+        generateWaterModel(chunkManager);
+    }
+
+    public void generateWaterModel(ChunkManager chunkManager){
+        ModelHelper modelHelper = new ModelHelper();
+
+        for(int x=0; x<heightData.length; x++) {
+            for (int y = 0; y < heightData[x].length; y++) {
+                Vector3f color0 = new Vector3f(0/255f, 0/255f, 0/255f);
+                Vector3f color1 = new Vector3f(255/255f, 0/255f, 0/255f);
+
+                Vector3f[] vertices = new Vector3f[4];
+                Vector3f[] colors = new Vector3f[4];
+                double minHeight = Float.MAX_VALUE;
+                for(int yy=0; yy<2; yy++){
+                    for(int xx=0; xx<2; xx++){
+                        int posX = x + xx + chunkPos.x * CHUNK_SIZE;
+                        int posY = y + yy + chunkPos.y * CHUNK_SIZE;
+
+                        vertices[yy*2 + xx] = new Vector3f(x + xx, WATER_LEVEL, y + yy);
+
+                        double height = chunkManager.getHeightAt(posX, posY);
+                        minHeight = Math.min(height, minHeight);
+                        colors[yy*2 + xx] = MathHelper.mix(color0, color1, (float) MathHelper.clamp(height/(WATER_LEVEL*1.2f), 0f, 1f));
+                    }
+                }
+
+                if(minHeight <= WATER_LEVEL + 1) {
+                    modelHelper.addTriangle(vertices[2], vertices[1], vertices[0], colors[2], colors[1], colors[0]);
+                    modelHelper.addTriangle(vertices[1], vertices[2], vertices[3], colors[1], colors[2], colors[3]);
+                }
+            }
+        }
+
+        waterRawModel = modelHelper.generateRawModel();
     }
 
 }

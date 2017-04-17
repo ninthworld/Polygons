@@ -30,7 +30,7 @@ public class Main implements IManager {
         modelManager = new ModelManager();
         fboManager = new FboManager();
 
-        camera = new Camera(new Vector3f(0, 0, 0), new Vector3f(0, 0, 0));
+        camera = new Camera(new Vector3f(0, 32, 0), new Vector3f(0, 0, 0));
 
         initialize();
     }
@@ -48,10 +48,10 @@ public class Main implements IManager {
     public void update(){
         while(!Display.isCloseRequested()){
             rendererManager.clearBuffers();
-            rendererManager.debugKeyboard();
 
             camera.updateKeyboard();
             camera.updateMouse();
+            camera.debugKeyboard();
 
             chunkManager.updateChunks(camera);
 

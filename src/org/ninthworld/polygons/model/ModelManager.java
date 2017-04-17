@@ -4,6 +4,7 @@ import org.lwjgl.opengl.GL11;
 import org.ninthworld.polygons.engine.IManager;
 import org.ninthworld.polygons.helper.TextureData;
 import org.ninthworld.polygons.loader.Loader;
+import org.ninthworld.polygons.terrain.TreeGenerator;
 
 import java.util.HashMap;
 
@@ -15,6 +16,7 @@ public class ModelManager implements IManager {
     private static String[] TEXTURE_FILES = {"/skybox/side.png", "/skybox/side.png", "/skybox/top.png", "/skybox/bottom.png", "/skybox/side.png", "/skybox/side.png"};
 
     public static final String PINE_TREE = "pineTree";
+    public static final String REDWOOD_TREE = "redwoodTree";
 
     public HashMap<String, RawModel> models;
     public RawModel skyboxCube;
@@ -26,7 +28,9 @@ public class ModelManager implements IManager {
 
     @Override
     public void initialize(){
-        models.put(PINE_TREE, PineModel.generatePineRawModel());
+        models.put(PINE_TREE, TreeGenerator.generatorPineTree());
+        models.put(REDWOOD_TREE, TreeGenerator.generatorRedwoodTree());
+
         skyboxCube = Loader.load(VERTICES, 3);
 
         TextureData[] textureData = new TextureData[TEXTURE_FILES.length];
