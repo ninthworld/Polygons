@@ -1,4 +1,4 @@
 # Polygons
 LWJGL Low poly terrain rendering
 
-![Terrain Screenshot](https://github.com/ninthworld/Polygons/blob/master/screenshots/ss0_terrain.png)
+![Terrain Screenshot](https://github.com/ninthworld/Polygons/blob/master/screenshots/ss1_terrain.png)
