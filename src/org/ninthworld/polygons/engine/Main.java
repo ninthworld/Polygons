@@ -5,7 +5,7 @@ import org.lwjgl.util.vector.Vector3f;
 import org.ninthworld.polygons.camera.Camera;
 import org.ninthworld.polygons.chunk.ChunkManager;
 import org.ninthworld.polygons.display.DisplayManager;
-import org.ninthworld.polygons.helper.MathHelper;
+import org.ninthworld.polygons.fbo.FboManager;
 import org.ninthworld.polygons.model.ModelManager;
 import org.ninthworld.polygons.renderer.RendererManager;
 
@@ -18,6 +18,7 @@ public class Main implements IManager {
     private RendererManager rendererManager;
     private ChunkManager chunkManager;
     private ModelManager modelManager;
+    private FboManager fboManager;
 
     private Camera camera;
 
@@ -27,6 +28,7 @@ public class Main implements IManager {
         rendererManager = new RendererManager();
         chunkManager = new ChunkManager();
         modelManager = new ModelManager();
+        fboManager = new FboManager();
 
         camera = new Camera(new Vector3f(0, 0, 0), new Vector3f(0, 0, 0));
 
@@ -38,6 +40,7 @@ public class Main implements IManager {
         rendererManager.initialize();
         chunkManager.initialize();
         modelManager.initialize();
+        fboManager.initialize();
 
         update();
     }
@@ -50,9 +53,10 @@ public class Main implements IManager {
             camera.updateKeyboard();
             camera.updateMouse();
 
-            chunkManager.updateChunks(camera         );
+            chunkManager.updateChunks(camera);
 
-            rendererManager.chunkRenderer.render(chunkManager, modelManager, camera);
+            fboManager.render(rendererManager, chunkManager, modelManager, camera);
+//            rendererManager.chunkRenderer.render(chunkManager, modelManager, camera);
 
             displayManager.update();
         }
@@ -62,6 +66,7 @@ public class Main implements IManager {
 
     @Override
     public void cleanUp(){
+        fboManager.cleanUp();
         modelManager.cleanUp();
         chunkManager.cleanUp();
         rendererManager.cleanUp();

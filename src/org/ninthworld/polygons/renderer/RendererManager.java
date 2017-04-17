@@ -17,6 +17,7 @@ public class RendererManager implements IManager {
     public ShaderManager shaderManager;
     public ChunkRenderer chunkRenderer;
     public ModelRenderer modelRenderer;
+    public SkyboxRenderer skyboxRenderer;
 
     public boolean isWireframe, isntWireframe;
 
@@ -25,6 +26,7 @@ public class RendererManager implements IManager {
         projectionMatrix = MatrixHelper.createProjectionMatrix(Display.getWidth(), Display.getHeight(), 70f, 0.1f, 1000f);
         chunkRenderer = new ChunkRenderer(projectionMatrix, shaderManager.chunkShader, shaderManager.modelShader);
         modelRenderer = new ModelRenderer(projectionMatrix, shaderManager.modelShader);
+        skyboxRenderer = new SkyboxRenderer(projectionMatrix, shaderManager.skyboxShader);
 
         isWireframe = false;
         isntWireframe = true;
@@ -37,7 +39,7 @@ public class RendererManager implements IManager {
         GL11.glEnable(GL11.GL_DEPTH_TEST);
         GL11.glCullFace(GL11.GL_BACK);
         GL11.glEnable(GL11.GL_CULL_FACE);
-        GL11.glClearColor(0.7f, 0.9f, 1f, 1);
+        GL11.glClearColor(0x00/255f, 0x96/255f, 0xff/255f, 1);
     }
 
     public void clearBuffers(){
