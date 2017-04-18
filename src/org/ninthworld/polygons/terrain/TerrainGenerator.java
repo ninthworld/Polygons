@@ -1,6 +1,7 @@
 package org.ninthworld.polygons.terrain;
 
 import org.ninthworld.polygons.chunk.Chunk;
+import org.ninthworld.polygons.helper.MathHelper;
 import org.ninthworld.polygons.helper.SimplexNoiseOctave;
 import org.ninthworld.polygons.model.ModelManager;
 
@@ -14,40 +15,68 @@ public class TerrainGenerator {
     private SimplexNoiseOctave[] noise;
 
     public TerrainGenerator(){
-        noise = new SimplexNoiseOctave[8];
+        noise = new SimplexNoiseOctave[16];
         for(int i=0; i<noise.length; i++){
             noise[i] = new SimplexNoiseOctave(SEED + i);
         }
     }
 
+    public double[] getBiomeHeights(double x, double y){
+
+        double parentBiome = sumOctave(noise[0], 16, x, y, 0.10, 0.003, 0.0, 1.0);
+        double childBiome1 = sumOctave(noise[1], 16, x, y, 0.10, 0.003, 0.0, 1.0);
+        double childBiome2 = sumOctave(noise[2], 4, x, y, 0.01, 0.003, 0.0, 2.0) - 1.0;
+
+        double oceanBiome = sumOctave(noise[8], 16, x, y, 0.55, 0.01, 0.0, 64.0);
+        double plainsBiome = sumOctave(noise[9], 16, x, y, 0.40, 0.03, 0.0, 16.0);
+        double forestBiome = sumOctave(noise[10], 16, x, y, 0.60, 0.02, 0.0, 64.0);
+        double mountainBiome = sumOctave(noise[11], 16, x, y, 0.55, 0.012, 0.0, 96.0);
+
+        double childHeight1 = ((MathHelper.clamp(parentBiome, 0.2f, 1.0f) - 0.2)/0.8);
+        double childHeight2 = (1.0 - MathHelper.clamp(childBiome1, 0.0f, 0.7f)/0.7);
+
+        double plainsHeight = (1.0 - MathHelper.clamp(childBiome2, 0.0f, 0.6f)/0.6) * plainsBiome * childHeight2 * childHeight1;
+        double forestsHeight = ((MathHelper.clamp(childBiome2, 0.4f, 1.0f) - 0.4)/0.6) * forestBiome * childHeight2 * childHeight1;
+
+        double mountainsHeight = ((MathHelper.clamp(childBiome1, 0.5f, 1.0f) - 0.5)/0.5) * mountainBiome * childHeight1;
+
+        double oceanHeight = (1.0 - MathHelper.clamp(parentBiome, 0.0f, 0.3f)/0.3) * oceanBiome;
+
+        return new double[]{
+                oceanHeight,
+                mountainsHeight,
+                plainsHeight,
+                forestsHeight
+        };
+    }
+
     public double getHeightAt(double x, double y){
+        double[] biomeHeights = getBiomeHeights(x, y);
 
-        double biome = sumOctave(noise[0], 16, x, y, 0.05, 0.003, 0.0, 1.0);
-
-        double hBiome0 = sumOctave(noise[1], 16, x, y, 0.15, 0.002, 0.0, 8.0);
-        double hBiome1 = sumOctave(noise[2], 16, x, y, 0.45, 0.01, 0.0, 96.0);
-
-
-        return hBiome0 * biome + hBiome1 * (1 - biome);
+        return -biomeHeights[0] + biomeHeights[1] + biomeHeights[2] + biomeHeights[3] + 16.0;
     }
 
     public String getEntityAt(double x, double y){
+        double[] biomeHeights = getBiomeHeights(x, y);
 
-        double biome = sumOctave(noise[0], 16, x, y, 0.05, 0.003, 0.0, 1.0);
-        double entityChance = sumOctave(noise[4], 8, x, y, 0.9, 1, 0.0, 1.0);
-        double height = getHeightAt(x, y);
-
-        if(height > Chunk.WATER_LEVEL) {
-            if (biome > 0.5 && entityChance > 0.65 && height < 40) {
-                return ModelManager.PINE_TREE;
-            } else if (biome > 0.3 && entityChance > 0.7) {
-                return ModelManager.REDWOOD_TREE;
-            } else {
-                return null;
-            }
-        }else{
-            return null;
+        int maxHeightIndex = 0;
+        for(int i=0; i<biomeHeights.length; i++){
+            if(biomeHeights[i] > biomeHeights[maxHeightIndex]) maxHeightIndex = i;
         }
+
+        double entityChance = sumOctave(noise[15], 16, x, y, 0.9, 1, 0.0, 1.0);
+
+        if(maxHeightIndex == 2){
+            if(entityChance > 0.62){
+                return ModelManager.PINE_TREE;
+            }
+        }else if(maxHeightIndex == 3){
+            if(entityChance > 0.63){
+                return ModelManager.REDWOOD_TREE;
+            }
+        }
+
+        return null;
     }
 
     private double sumOctave(SimplexNoiseOctave noise, int numIterations, double x, double y, double persistence, double scale, double low, double high){
