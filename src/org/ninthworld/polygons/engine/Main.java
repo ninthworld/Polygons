@@ -1,5 +1,6 @@
 package org.ninthworld.polygons.engine;
 
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.util.vector.Vector3f;
 import org.ninthworld.polygons.camera.Camera;
@@ -30,7 +31,15 @@ public class Main implements IManager {
         modelManager = new ModelManager();
         fboManager = new FboManager();
 
-        camera = new Camera(new Vector3f(0, 32, 0), new Vector3f(0, 0, 0));
+        camera = new Camera(
+                    new Vector3f(0, 20, 0),
+                    new Vector3f(0, 0, 0),
+                    new Camera(
+                            new Vector3f(0, 20, 0),
+                            new Vector3f(0, 0, 0),
+                            null
+                    )
+        );
 
         initialize();
     }
@@ -49,14 +58,18 @@ public class Main implements IManager {
         while(!Display.isCloseRequested()){
             rendererManager.clearBuffers();
 
-            camera.updateKeyboard();
-            camera.updateMouse();
-            camera.debugKeyboard();
+            if(camera.isEnabled) {
+                camera.updateKeyboard();
+                camera.updateMouse();
+            }else{
+                camera.debugCamera.updateKeyboard();
+                camera.debugCamera.updateMouse();
+            }
+            camera.debugKeyboard(chunkManager);
 
             chunkManager.updateChunks(camera);
 
             fboManager.render(rendererManager, chunkManager, modelManager, camera);
-//            rendererManager.chunkRenderer.render(chunkManager, modelManager, camera);
 
             displayManager.update();
         }

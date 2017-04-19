@@ -15,6 +15,14 @@ public class DisplayManager implements IManager {
     public static final boolean VSYNC = true;
     public static final String TITLE = "Polygons";
 
+    public int fps;
+    public long time;
+
+    public DisplayManager(){
+        fps = 0;
+        time = System.nanoTime();
+    }
+
     @Override
     public void initialize() {
         try {
@@ -34,10 +42,21 @@ public class DisplayManager implements IManager {
             e.printStackTrace();
         }
     }
-
     public void update(){
+        if(System.nanoTime() - time < 1000000000L){
+            fps++;
+        }else{
+            updateTitle(TITLE + " - FPS: " + fps);
+            fps = 0;
+            time = System.nanoTime();
+        }
+
         Display.sync(FPS);
         Display.update();
+    }
+
+    public void updateTitle(String str){
+        Display.setTitle(str);
     }
 
     @Override

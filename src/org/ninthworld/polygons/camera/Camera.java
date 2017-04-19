@@ -4,6 +4,7 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.util.vector.Matrix4f;
 import org.lwjgl.util.vector.Vector3f;
+import org.ninthworld.polygons.chunk.ChunkManager;
 import org.ninthworld.polygons.helper.MatrixHelper;
 
 /**
@@ -11,7 +12,7 @@ import org.ninthworld.polygons.helper.MatrixHelper;
  */
 public class Camera {
 
-    private static final float moveSpeed = 0.2f;
+    private float moveSpeed = 0.2f;
     private static final float rotSpeed = 0.002f;
     private static final float maxLook = (float) Math.toRadians(85);
 
@@ -23,8 +24,11 @@ public class Camera {
 
     public boolean isFreemode, isntFreemode;
     public boolean isWireframe, isntWireframe;
+    public boolean isEnabled, isntEnabled;
 
-    public Camera(Vector3f position, Vector3f rotation){
+    public Camera debugCamera;
+
+    public Camera(Vector3f position, Vector3f rotation, Camera debugCamera){
         this.position = position;
         this.rotation = rotation;
         velocity = 0.0f;
@@ -32,10 +36,24 @@ public class Camera {
         onGround = false;
 
         isWireframe = !(isntWireframe = true);
-        isFreemode = !(isntFreemode = true);
+        isFreemode = !(isntFreemode = false);
+        isEnabled = !(isntEnabled = false);
+        this.debugCamera = debugCamera;
     }
 
-    public void debugKeyboard(){
+    public void debugKeyboard(ChunkManager chunkManager){
+        if(Keyboard.isKeyDown(Keyboard.KEY_0)){
+            if(isEnabled){
+                isntEnabled = true;
+            }else{
+                isntEnabled = false;
+            }
+        }else{
+            if(isEnabled == isntEnabled){
+                isEnabled = !isntEnabled;
+            }
+        }
+
         if(Keyboard.isKeyDown(Keyboard.KEY_1)){
             if(isWireframe){
                 isntWireframe = true;
@@ -60,6 +78,23 @@ public class Camera {
             }
         }
 
+        if(Keyboard.isKeyDown(Keyboard.KEY_EQUALS)){
+            moveSpeed += 0.01f;
+        }
+        if(Keyboard.isKeyDown(Keyboard.KEY_MINUS)){
+            moveSpeed -= 0.01f;
+        }
+
+        if(Keyboard.isKeyDown(Keyboard.KEY_LBRACKET)){
+            chunkManager.loadRadius++;
+        }
+        if(Keyboard.isKeyDown(Keyboard.KEY_RBRACKET)){
+            chunkManager.loadRadius--;
+        }
+    }
+
+    public Vector3f getRotation(){
+        return rotation;
     }
 
     public Vector3f getPosition(){
