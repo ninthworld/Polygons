@@ -184,17 +184,21 @@ public class Chunk {
 
                 float angle = 0.6f;
 
-                if(Vector3f.dot(normal1, new Vector3f(0, 1, 0)) > angle){
-                    modelHelper.addTriangle(vertices[2], vertices[1], vertices[0], colors[2], colors[1], colors[0]);
-                }else{
-                    modelHelper.addTriangle(vertices[2], vertices[1], vertices[0], stone);
-                }
+//                if(Vector3f.dot(normal1, new Vector3f(0, 1, 0)) > angle){
+//                    modelHelper.addTriangle(vertices[2], vertices[1], vertices[0], colors[2], colors[1], colors[0]);
+//                }else{
+//                    modelHelper.addTriangle(vertices[2], vertices[1], vertices[0], stone);
+//                }
+//
+//                if(Vector3f.dot(normal2, new Vector3f(0, 1, 0)) > angle) {
+//                    modelHelper.addTriangle(vertices[1], vertices[2], vertices[3], colors[1], colors[2], colors[3]);
+//                }else{
+//                    modelHelper.addTriangle(vertices[1], vertices[2], vertices[3], stone);
+//                }
 
-                if(Vector3f.dot(normal2, new Vector3f(0, 1, 0)) > angle) {
-                    modelHelper.addTriangle(vertices[1], vertices[2], vertices[3], colors[1], colors[2], colors[3]);
-                }else{
-                    modelHelper.addTriangle(vertices[1], vertices[2], vertices[3], stone);
-                }
+                Vector3f col = chunkManager.terrainGenerator.getColorAt(x + chunkPos.x * CHUNK_SIZE, y + chunkPos.y * CHUNK_SIZE);
+                modelHelper.addTriangle(vertices[2], vertices[1], vertices[0], col);
+                modelHelper.addTriangle(vertices[1], vertices[2], vertices[3], col);
             }
         }
 
