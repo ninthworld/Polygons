@@ -20,29 +20,33 @@ public class TerrainGenerator {
     public static final int BIOME_CHUNK_SIZE = Chunk.CHUNK_SIZE * 16;
     private static final int SEED = 11235813;
 
-    private SimplexNoiseOctave[] noise;
+    private SimplexNoiseOctave biomeNoise;
+    private SimplexNoiseOctave biomeEdgeNoise;
+    private SimplexNoiseOctave temperatureNoise;
+    private SimplexNoiseOctave heightNoise;
 
     private HashMap<String, List<Vector3f>> biomeChunkPoints;
 
     public TerrainGenerator(){
         biomeChunkPoints = new HashMap<>();
-        noise = new SimplexNoiseOctave[16];
-        for(int i=0; i<noise.length; i++){
-            noise[i] = new SimplexNoiseOctave(SEED + i);
-        }
+
+        biomeNoise = new SimplexNoiseOctave(SEED + 1);
+        biomeEdgeNoise = new SimplexNoiseOctave(SEED + 2);
+        temperatureNoise = new SimplexNoiseOctave(SEED + 3);
+        heightNoise = new SimplexNoiseOctave(SEED + 4);
     }
 
     public double getBiomeHeight(double x, double y){
-        return sumOctave(noise[0], 16, x, y, 0.1, 0.001, 0.0, 1.0);
+        return sumOctave(biomeNoise, 16, x, y, 0.1, 0.001, 0.0, 1.0);
     }
 
     public double getTemperature(double x, double y){
-        return sumOctave(noise[1], 8, x, y, 0.01, 0.001, 0.0, 1.0);
+        return sumOctave(temperatureNoise, 8, x, y, 0.01, 0.001, 0.0, 1.0);
     }
 
     private static float bcpSD = 8.0f;
     private static int bcpMin = 8;
-    public List<Vector3f> getBiomePoints(double x, double y){
+    private List<Vector3f> getBiomePoints(double x, double y){
         List<Vector3f> biomePoints = new ArrayList<>();
         Vector2i biomeChunkPosOrigin = new Vector2i((int)Math.floor(x/(double) BIOME_CHUNK_SIZE), (int)Math.floor(y/(double)BIOME_CHUNK_SIZE));
         for(int i=-1; i<2; i++){
@@ -72,10 +76,10 @@ public class TerrainGenerator {
         return biomePoints;
     }
 
-    public Vector3f getClosestBiomePoint(double x, double y){
+    private Vector3f getClosestBiomePoint(double x, double y){
         List<Vector3f> biomePoints = getBiomePoints(x, y);
 
-        double pointNoise = sumOctave(noise[1], 8, x, y, 0.3, 0.05, 0.0, 20.0) - 10.0;
+        double pointNoise = sumOctave(biomeEdgeNoise, 8, x, y, 0.3, 0.05, 0.0, 20.0) - 10.0;
         double closestDist = -1;
         Vector3f closest = null;
         for(Vector3f point : biomePoints){
@@ -89,106 +93,85 @@ public class TerrainGenerator {
         return closest;
     }
 
-    public Vector3f getColorAt(double x, double y){
+    public static final int OCEAN = 0;
+    public static final int MOUNTAIN = 1;
+    public static final int PLAINS = 2;
+    public static final int DESERT = 3;
+
+    public int getBiomeAt(double x, double y){
         Vector3f closest = getClosestBiomePoint(x, y);
         double temperature = getTemperature(closest.x, closest.y);
 
         if(closest.y < 0.4){
-            return new Vector3f(0, 0, 1);
+            return OCEAN;
         }else{
             if(closest.y > 0.8){
-                return new Vector3f(1, 0, 0);
+                return MOUNTAIN;
             }else{
                 if(temperature > 0.5){
-                    return new Vector3f(0, 1, 0);
+                    return PLAINS;
                 }else{
-                    return new Vector3f(1, 1, 0);
+                    return DESERT;
                 }
             }
-//            return new Vector3f(closest.y * 0.1f, closest.y, closest.y * 0.2f);
         }
-    }
-
-    public double[] getBiomeAmounts(double x, double y){
-
-        double parentBiome = sumOctave(noise[0], 16, x, y, 0.10, 0.003, 0.0, 1.0);
-        double childBiome1 = sumOctave(noise[1], 16, x, y, 0.10, 0.003, 0.0, 1.0);
-        double childBiome2 = sumOctave(noise[2], 16, x, y, 0.10, 0.003, 0.0, 1.0);
-
-        double childHeight1 = ((MathHelper.clamp(parentBiome, 0.2f, 1.0f) - 0.2)/0.8);
-        double childHeight2 = (1.0 - MathHelper.clamp(childBiome1, 0.0f, 0.7f)/0.7);
-
-        double plainsHeight = (1.0 - MathHelper.clamp(childBiome2, 0.0f, 0.6f)/0.6) * childHeight2 * childHeight1;
-        double forestsHeight = ((MathHelper.clamp(childBiome2, 0.4f, 1.0f) - 0.4)/0.6) * childHeight2 * childHeight1;
-
-        double mountainsHeight = ((MathHelper.clamp(childBiome1, 0.5f, 1.0f) - 0.5)/0.5) * childHeight1;
-
-        double oceanHeight = (1.0 - MathHelper.clamp(parentBiome, 0.0f, 0.3f)/0.3);
-
-        return new double[]{
-                oceanHeight,
-                mountainsHeight,
-                plainsHeight,
-                forestsHeight
-        };
-    }
-
-    public double[] getBiomeHeights(double x, double y){
-//        double[] biomeAmounts = getBiomeAmounts(x, y);
-//
-//        double oceanBiome = sumOctave(noise[8], 16, x, y, 0.55, 0.01, 0.0, 64.0);
-//        double plainsBiome = sumOctave(noise[9], 16, x, y, 0.40, 0.03, 0.0, 16.0);
-//        double forestBiome = sumOctave(noise[10], 16, x, y, 0.60, 0.02, 0.0, 64.0);
-//        double mountainBiome = sumOctave(noise[11], 16, x, y, 0.55, 0.012, 0.0, 96.0);
-//
-//        return new double[]{
-//                oceanBiome * biomeAmounts[0],
-//                mountainBiome * biomeAmounts[1],
-//                plainsBiome * biomeAmounts[2],
-//                forestBiome * biomeAmounts[3]
-//        };
-
-        return new double[4];
     }
 
     public double getHeightAt(double x, double y){
-//        double[] biomeHeights = getBiomeHeights(x, y);
-//
-//        return -biomeHeights[0] + biomeHeights[1] + biomeHeights[2] + biomeHeights[3] + 16.0;
+        int biome = getBiomeAt(x, y);
 
-        Vector3f closest = getClosestBiomePoint(x, y);
-        double height = getBiomeHeight(x, y);
-
-//        return (height * 0.9 + closest.y * 0.1) * 40.0;
-
-        double oceanBiome = sumOctave(noise[8], 16, x, y, 0.55, 0.01, 0.0, 1.0);
-
-        if(closest.y < 0.4){
-            return height * 40.0 * -oceanBiome;
-        }else{
-            return height * 40.0;
+        double height = 0;
+        switch(biome){
+            case OCEAN:
+                height = -sumOctave(heightNoise, 16, x, y, 0.4, 0.01, 0.0, 16.0); break;
+            case MOUNTAIN:
+                height = sumOctave(heightNoise, 16, x, y, 0.4, 0.01, 0.0, 128.0); break;
+            case PLAINS:
+                height = sumOctave(heightNoise, 16, x, y, 0.4, 0.01, 0.0, 24.0); break;
+            case DESERT:
+                height = sumOctave(heightNoise, 16, x, y, 0.4, 0.01, 0.0, 32.0); break;
         }
+
+        return height * getBiomeHeight(x, y) + 16.0;
+    }
+
+    public double getSmoothHeightAt(double x, double y){
+//        double[] kernel = new double[]{
+//                0.077847, 0.123317, 0.077847,
+//                0.123317, 0.195346, 0.123317,
+//                0.077847, 0.123317, 0.077847
+//        };
+//        double height = 0;
+//        int r = 3;
+//        for(int i=-r; i<=r; i++){
+//            for(int j=-r; j<=r; j++){
+//                height += getHeightAt(x + i, y + j);// * kernel[(i+1) + (j+1)*(int)Math.floor(r+0.5*2)];
+//            }
+//        }
+//
+//        return height/((r+r+1)*(r+r+1));
+        return getHeightAt(x, y);
     }
 
     public String getEntityAt(double x, double y){
-        double[] biomeHeights = getBiomeHeights(x, y);
-
-        int maxHeightIndex = 0;
-        for(int i=0; i<biomeHeights.length; i++){
-            if(biomeHeights[i] > biomeHeights[maxHeightIndex]) maxHeightIndex = i;
-        }
-
-        double entityChance = sumOctave(noise[15], 16, x, y, 0.9, 1, 0.0, 1.0);
-
-        if(maxHeightIndex == 2){
-            if(entityChance > 0.62){
-                return ModelManager.PINE_TREE;
-            }
-        }else if(maxHeightIndex == 3){
-            if(entityChance > 0.63){
-                return ModelManager.REDWOOD_TREE;
-            }
-        }
+//        double[] biomeHeights = getBiomeHeights(x, y);
+//
+//        int maxHeightIndex = 0;
+//        for(int i=0; i<biomeHeights.length; i++){
+//            if(biomeHeights[i] > biomeHeights[maxHeightIndex]) maxHeightIndex = i;
+//        }
+//
+//        double entityChance = sumOctave(noise[15], 16, x, y, 0.9, 1, 0.0, 1.0);
+//
+//        if(maxHeightIndex == 2){
+//            if(entityChance > 0.62){
+//                return ModelManager.PINE_TREE;
+//            }
+//        }else if(maxHeightIndex == 3){
+//            if(entityChance > 0.63){
+//                return ModelManager.REDWOOD_TREE;
+//            }
+//        }
 
         return null;
     }

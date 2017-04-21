@@ -74,7 +74,7 @@ public class Chunk {
     public void generateChunkData(TerrainGenerator terrainGenerator){
         for(int x=0; x<heightData.length; x++){
             for(int y=0; y<heightData[x].length; y++){
-                heightData[x][y] = terrainGenerator.getHeightAt(x + chunkPos.x * CHUNK_SIZE, y + chunkPos.y * CHUNK_SIZE);
+                heightData[x][y] = terrainGenerator.getSmoothHeightAt(x + chunkPos.x * CHUNK_SIZE, y + chunkPos.y * CHUNK_SIZE);
 
                 String entity = terrainGenerator.getEntityAt(x + chunkPos.x * CHUNK_SIZE, y + chunkPos.y * CHUNK_SIZE);
                 if(entity != null && !entity.equals("")){
@@ -117,16 +117,8 @@ public class Chunk {
                     }
                 }
 
-
                 Vector3f normal1 = modelHelper.getNormal(vertices[2], vertices[1], vertices[0]);
                 Vector3f normal2 = modelHelper.getNormal(vertices[1], vertices[2], vertices[3]);
-
-//                Vector3f colorHigher = new Vector3f(138/255f, 187/255f, 82/255f);
-//                Vector3f colorLower = new Vector3f(46/255f, 147/255f, 72/255f);
-//
-//                Vector3f color = new Vector3f(112/255f, 194/255f, 84/255f);
-
-                double[] biomeAmounts = chunkManager.terrainGenerator.getBiomeAmounts(x + chunkPos.x * CHUNK_SIZE, y + chunkPos.y * CHUNK_SIZE);
 
                 Vector3f stone = new Vector3f(184/255f, 193/255f, 163/255f);
                 Vector3f grassDirt = new Vector3f(96/255f, 106/255f, 69/255f);
@@ -134,71 +126,39 @@ public class Chunk {
                 Vector3f grassYellow = new Vector3f(153/255f, 208/255f, 65/255f);
                 Vector3f grassDark = new Vector3f(70/255f, 153/255f, 82/255f);
 
-                Vector3f[] colorsBase = new Vector3f[]{
-                        stone,
-                        grassDark,
-                        grassGreen,
-                        grassGreen
-                };
-
-                Vector3f[] colorsHigher = new Vector3f[]{
-                        stone,
-                        grassGreen,
-                        grassYellow,
-                        grassDirt
-                };
-
-                Vector3f[] colorsLower = new Vector3f[]{
-                        stone,
-                        grassGreen,
-                        grassGreen,
-                        grassDirt
-                };
-
-                double maxAmount = 0;
-                int maxIndex = 0;
-                for(int i=0; i<biomeAmounts.length; i++){
-                    if(biomeAmounts[i] > maxAmount){
-                        maxAmount = biomeAmounts[i];
-                        maxIndex = i;
-                    }
-//                    Vector3f.add(MathHelper.mul(colorsBase[i], (float) (biomeAmounts[i] * biomeAmounts[i])), color, color);
-//                    Vector3f.add(MathHelper.mul(colorsHigher[i], (float) (biomeAmounts[i] * biomeAmounts[i])), colorHigher, colorHigher);
-//                    Vector3f.add(MathHelper.mul(colorsLower[i], (float) (biomeAmounts[i] * biomeAmounts[i])), colorLower, colorLower);
-                }
-
-                Vector3f color = colorsBase[maxIndex];
-                Vector3f colorHigher = colorsHigher[maxIndex];
-                Vector3f colorLower = colorsLower[maxIndex];
-
-                Vector3f[] colors = new Vector3f[4];
-                for(int i=0; i<colors.length; i++){
-                    if(deltas[i] >= 0){
-                        float m = deltas[i];
-                        colors[i] = MathHelper.mix(color, colorHigher, m);
-                    }else{
-                        float m = -deltas[i];
-                        colors[i] = MathHelper.mix(color, colorLower, m);
-                    }
+                int biome = chunkManager.terrainGenerator.getBiomeAt(x, y);
+                Vector3f color = new Vector3f(0, 0, 0);
+                switch(biome){
+                    case TerrainGenerator.OCEAN:
+                        color = new Vector3f(0, 0, 1);
+                        break;
+                    case TerrainGenerator.MOUNTAIN:
+                        color = grassDirt;
+                        break;
+                    case TerrainGenerator.PLAINS:
+                        color = grassGreen;
+                        break;
+                    case TerrainGenerator.DESERT:
+                        color = grassYellow;
+                        break;
                 }
 
                 float angle = 0.6f;
+                if(Vector3f.dot(normal1, new Vector3f(0, 1, 0)) > angle){
+                    modelHelper.addTriangle(vertices[2], vertices[1], vertices[0], color);
+                }else{
+                    modelHelper.addTriangle(vertices[2], vertices[1], vertices[0], stone);
+                }
 
-//                if(Vector3f.dot(normal1, new Vector3f(0, 1, 0)) > angle){
-//                    modelHelper.addTriangle(vertices[2], vertices[1], vertices[0], colors[2], colors[1], colors[0]);
-//                }else{
-//                    modelHelper.addTriangle(vertices[2], vertices[1], vertices[0], stone);
-//                }
-//
-//                if(Vector3f.dot(normal2, new Vector3f(0, 1, 0)) > angle) {
-//                    modelHelper.addTriangle(vertices[1], vertices[2], vertices[3], colors[1], colors[2], colors[3]);
-//                }else{
-//                    modelHelper.addTriangle(vertices[1], vertices[2], vertices[3], stone);
-//                }
+                if(Vector3f.dot(normal2, new Vector3f(0, 1, 0)) > angle) {
+                    modelHelper.addTriangle(vertices[1], vertices[2], vertices[3], color);
+                }else{
+                    modelHelper.addTriangle(vertices[1], vertices[2], vertices[3], stone);
+                }
 
-                Vector3f col = chunkManager.terrainGenerator.getColorAt(x + chunkPos.x * CHUNK_SIZE, y + chunkPos.y * CHUNK_SIZE);
-                modelHelper.addTriangle(vertices[2], vertices[1], vertices[0], col);
-                modelHelper.addTriangle(vertices[1], vertices[2], vertices[3], col);
+//                Vector3f col = chunkManager.terrainGenerator.getColorAt(x + chunkPos.x * CHUNK_SIZE, y + chunkPos.y * CHUNK_SIZE);
+//                modelHelper.addTriangle(vertices[2], vertices[1], vertices[0], col);
+//                modelHelper.addTriangle(vertices[1], vertices[2], vertices[3], col);
             }
         }
 
