@@ -48,7 +48,7 @@ public class ChunkManager implements IManager {
         if(loadedChunks.containsKey(chunkPos.toHashString())){
             return loadedChunks.get(chunkPos.toHashString()).getHeightAt(Math.floorMod(x, Chunk.CHUNK_SIZE), Math.floorMod(y, Chunk.CHUNK_SIZE));
         }else{
-            return terrainGenerator.getSmoothHeightAt(x, y);
+            return terrainGenerator.getHeightAt(x, y);
         }
     }
 
@@ -87,7 +87,7 @@ public class ChunkManager implements IManager {
         }
 
         if(!camera.isFreemode) {
-            float height = (float) terrainGenerator.getSmoothHeightAt(camera.getPosition().x, camera.getPosition().z) + 0.8f;
+            float height = (float) terrainGenerator.getHeightAt(camera.getPosition().x, camera.getPosition().z) + 0.8f;
             if (camera.getPosition().y < height) {
                 camera.getPosition().setY(height);
                 camera.onGround = true;

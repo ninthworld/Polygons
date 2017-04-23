@@ -20,7 +20,7 @@ public class Chunk {
     public static final int SEED = 12345;
     public static final int CHUNK_SIZE = 16;
     public static final int CHUNK_HEIGHT = 128;
-    public static final float WATER_LEVEL = 16f;
+    public static final float WATER_LEVEL = 0f;
 
     private Vector2i chunkPos;
     private double[][] heightData;
@@ -74,12 +74,12 @@ public class Chunk {
     public void generateChunkData(TerrainGenerator terrainGenerator){
         for(int x=0; x<heightData.length; x++){
             for(int y=0; y<heightData[x].length; y++){
-                heightData[x][y] = terrainGenerator.getSmoothHeightAt(x + chunkPos.x * CHUNK_SIZE, y + chunkPos.y * CHUNK_SIZE);
+                heightData[x][y] = terrainGenerator.getHeightAt(x + chunkPos.x * CHUNK_SIZE, y + chunkPos.y * CHUNK_SIZE);
 
-                String entity = terrainGenerator.getEntityAt(x + chunkPos.x * CHUNK_SIZE, y + chunkPos.y * CHUNK_SIZE);
-                if(entity != null && !entity.equals("")){
-                    entities.add(new ChunkEntity(entity, new Vector3f(x, (float) heightData[x][y], y)));
-                }
+//                String entity = terrainGenerator.getEntityAt(x + chunkPos.x * CHUNK_SIZE, y + chunkPos.y * CHUNK_SIZE);
+//                if(entity != null && !entity.equals("")){
+//                    entities.add(new ChunkEntity(entity, new Vector3f(x, (float) heightData[x][y], y)));
+//                }
             }
         }
     }
@@ -117,48 +117,53 @@ public class Chunk {
                     }
                 }
 
-                Vector3f normal1 = modelHelper.getNormal(vertices[2], vertices[1], vertices[0]);
-                Vector3f normal2 = modelHelper.getNormal(vertices[1], vertices[2], vertices[3]);
+//                Vector3f normal1 = modelHelper.getNormal(vertices[2], vertices[1], vertices[0]);
+//                Vector3f normal2 = modelHelper.getNormal(vertices[1], vertices[2], vertices[3]);
+//
+//                Vector3f stone = new Vector3f(184/255f, 193/255f, 163/255f);
+//                Vector3f grassDirt = new Vector3f(96/255f, 106/255f, 69/255f);
+//                Vector3f grassGreen = new Vector3f(78/255f, 175/255f, 88/255f);
+//                Vector3f grassYellow = new Vector3f(153/255f, 208/255f, 65/255f);
+//                Vector3f grassDark = new Vector3f(70/255f, 153/255f, 82/255f);
+//
+//                int biome = chunkManager.terrainGenerator.getBiomeAt(x, y);
+//                Vector3f color = new Vector3f(0, 0, 0);
+//                switch(biome){
+//                    case TerrainGenerator.OCEAN:
+//                        color = new Vector3f(0, 0, 1);
+//                        break;
+//                    case TerrainGenerator.MOUNTAIN:
+//                        color = grassDirt;
+//                        break;
+//                    case TerrainGenerator.PLAINS:
+//                        color = grassGreen;
+//                        break;
+//                    case TerrainGenerator.DESERT:
+//                        color = grassYellow;
+//                        break;
+//                }
+//
+//                float angle = 0.6f;
+//                if(Vector3f.dot(normal1, new Vector3f(0, 1, 0)) > angle){
+//                    modelHelper.addTriangle(vertices[2], vertices[1], vertices[0], color);
+//                }else{
+//                    modelHelper.addTriangle(vertices[2], vertices[1], vertices[0], stone);
+//                }
+//
+//                if(Vector3f.dot(normal2, new Vector3f(0, 1, 0)) > angle) {
+//                    modelHelper.addTriangle(vertices[1], vertices[2], vertices[3], color);
+//                }else{
+//                    modelHelper.addTriangle(vertices[1], vertices[2], vertices[3], stone);
+//                }
 
-                Vector3f stone = new Vector3f(184/255f, 193/255f, 163/255f);
-                Vector3f grassDirt = new Vector3f(96/255f, 106/255f, 69/255f);
-                Vector3f grassGreen = new Vector3f(78/255f, 175/255f, 88/255f);
-                Vector3f grassYellow = new Vector3f(153/255f, 208/255f, 65/255f);
-                Vector3f grassDark = new Vector3f(70/255f, 153/255f, 82/255f);
+//                double[] biomes = chunkManager.terrainGenerator.getBiomeAtSmooth(x + chunkPos.x * CHUNK_SIZE, y + chunkPos.y * CHUNK_SIZE);
+//                Vector3f col = TerrainGenerator.getBiomeColorMulti(biomes);
 
-                int biome = chunkManager.terrainGenerator.getBiomeAt(x, y);
-                Vector3f color = new Vector3f(0, 0, 0);
-                switch(biome){
-                    case TerrainGenerator.OCEAN:
-                        color = new Vector3f(0, 0, 1);
-                        break;
-                    case TerrainGenerator.MOUNTAIN:
-                        color = grassDirt;
-                        break;
-                    case TerrainGenerator.PLAINS:
-                        color = grassGreen;
-                        break;
-                    case TerrainGenerator.DESERT:
-                        color = grassYellow;
-                        break;
-                }
+                int biome = chunkManager.terrainGenerator.getBiomeAt(x + chunkPos.x * CHUNK_SIZE, y + chunkPos.y * CHUNK_SIZE);
+                Vector3f col = TerrainGenerator.getBiomeColor(biome);
 
-                float angle = 0.6f;
-                if(Vector3f.dot(normal1, new Vector3f(0, 1, 0)) > angle){
-                    modelHelper.addTriangle(vertices[2], vertices[1], vertices[0], color);
-                }else{
-                    modelHelper.addTriangle(vertices[2], vertices[1], vertices[0], stone);
-                }
-
-                if(Vector3f.dot(normal2, new Vector3f(0, 1, 0)) > angle) {
-                    modelHelper.addTriangle(vertices[1], vertices[2], vertices[3], color);
-                }else{
-                    modelHelper.addTriangle(vertices[1], vertices[2], vertices[3], stone);
-                }
-
-//                Vector3f col = chunkManager.terrainGenerator.getColorAt(x + chunkPos.x * CHUNK_SIZE, y + chunkPos.y * CHUNK_SIZE);
-//                modelHelper.addTriangle(vertices[2], vertices[1], vertices[0], col);
-//                modelHelper.addTriangle(vertices[1], vertices[2], vertices[3], col);
+                modelHelper.addTriangle(vertices[2], vertices[1], vertices[0], col);
+                modelHelper.addTriangle(vertices[1], vertices[2], vertices[3], col);
             }
         }
 
