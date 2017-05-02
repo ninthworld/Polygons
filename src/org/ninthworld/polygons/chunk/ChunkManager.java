@@ -1,6 +1,7 @@
 package org.ninthworld.polygons.chunk;
 
 import org.lwjgl.input.Keyboard;
+import org.ninthworld.polygons.biome.BiomeManager;
 import org.ninthworld.polygons.camera.Camera;
 import org.ninthworld.polygons.engine.IManager;
 import org.ninthworld.polygons.terrain.TerrainGenerator;
@@ -18,12 +19,14 @@ public class ChunkManager implements IManager {
     public int loadRadius;
     public HashMap<String, Chunk> loadedChunks;
 
+    public BiomeManager biomeManager;
     public TerrainGenerator terrainGenerator;
 
     public ChunkManager(){
         loadRadius = 8;
         loadedChunks = new HashMap<>();
-        terrainGenerator = new TerrainGenerator();
+        biomeManager = new BiomeManager();
+        terrainGenerator = new TerrainGenerator(biomeManager);
     }
 
     @Override
