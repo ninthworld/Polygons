@@ -14,7 +14,7 @@ import java.util.*;
  */
 public class TerrainGenerator {
 
-    private static final int SEED = 11235813;
+//    private static final int SEED = 11235813;
     public static final int LOCAL_GRID_SIZE = 64;
 
     private SimplexNoiseOctave gridNoiseX;
@@ -22,7 +22,7 @@ public class TerrainGenerator {
 
     private BiomeManager biomeManager;
 
-    public TerrainGenerator(BiomeManager biomeManager){
+    public TerrainGenerator(int SEED, BiomeManager biomeManager){
         this.biomeManager = biomeManager;
 
         int i = 0;
@@ -80,7 +80,6 @@ public class TerrainGenerator {
             Biome biome = seedA.biome;
             if (biomes.containsKey(biome)) {
                 double val = biomes.get(biome);
-//                biomes.put(biome, MathHelper.clamp(val + min, 0, 1));
                 biomes.put(biome, Math.max(min, val));
             } else {
                 biomes.put(biome, min);

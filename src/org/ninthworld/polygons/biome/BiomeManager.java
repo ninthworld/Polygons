@@ -11,7 +11,7 @@ import org.ninthworld.polygons.model.ModelManager;
  */
 public class BiomeManager implements IManager {
 
-    private static final int SEED = 92234211;
+//    private static final int SEED = 92234211;
 
     private SimplexNoiseOctave elevationNoise;
     private SimplexNoiseOctave temperatureNoise;
@@ -21,7 +21,7 @@ public class BiomeManager implements IManager {
     private SimplexNoiseOctave biomeHeightNoise;
     private SimplexNoiseOctave biomeEntityNoise;
 
-    public BiomeManager(){
+    public BiomeManager(int SEED){
         int i = 0;
         elevationNoise = new SimplexNoiseOctave(SEED + (i++));
         temperatureNoise = new SimplexNoiseOctave(SEED + (i++));

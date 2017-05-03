@@ -63,17 +63,17 @@ vec4 vMultiply(vec4 v0, vec4 v1){
 void main(void){
 
     vec4 terrainColor = texture(terrainColorTexture, textureCoords).rgba;
-    out_Color = terrainColor;
+//    out_Color = terrainColor;
 
-//    vec4 textureColor = applySSAO(terrainColor, terrainDepthTexture, terrainNormalTexture);
-//
-//    vec4 normalColor = texture(terrainNormalTexture, textureCoords);
-//    float m = 0.00;
-//    if(normalColor.r <= m && normalColor.g <= m && normalColor.b <= m){
-//        out_Color = vMultiply(textureColor, normalColor) + vMultiply(terrainColor, (vec4(1) - normalColor));
-//    }else{
-//        out_Color = textureColor;
-//    }
+    vec4 textureColor = applySSAO(terrainColor, terrainDepthTexture, terrainNormalTexture);
+
+    vec4 normalColor = texture(terrainNormalTexture, textureCoords);
+    float m = 0.00;
+    if(normalColor.r <= m && normalColor.g <= m && normalColor.b <= m){
+        out_Color = vMultiply(textureColor, normalColor) + vMultiply(terrainColor, (vec4(1) - normalColor));
+    }else{
+        out_Color = textureColor;
+    }
 
     if(cameraPos.y < 0){
         out_Color = vec4(out_Color.xy * 0.6, out_Color.z * 1.8, 1.0);

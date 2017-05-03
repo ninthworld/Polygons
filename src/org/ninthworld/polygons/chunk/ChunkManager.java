@@ -10,6 +10,7 @@ import org.ninthworld.polygons.helper.Vector2i;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by NinthWorld on 4/15/2017.
@@ -25,8 +26,9 @@ public class ChunkManager implements IManager {
     public ChunkManager(){
         loadRadius = 8;
         loadedChunks = new HashMap<>();
-        biomeManager = new BiomeManager();
-        terrainGenerator = new TerrainGenerator(biomeManager);
+        Random rand = new Random();
+        biomeManager = new BiomeManager(rand.nextInt());
+        terrainGenerator = new TerrainGenerator(rand.nextInt(), biomeManager);
     }
 
     @Override
@@ -73,9 +75,9 @@ public class ChunkManager implements IManager {
         List<Chunk> unload = new ArrayList<>();
         for(Chunk chunk : loadedChunks.values()){
             if(chunk.getChunkPos().x >= cameraChunkPos.x + loadRadius ||
-               chunk.getChunkPos().x < cameraChunkPos.x - loadRadius ||
-               chunk.getChunkPos().y >= cameraChunkPos.y + loadRadius ||
-               chunk.getChunkPos().y < cameraChunkPos.y - loadRadius){
+                chunk.getChunkPos().x < cameraChunkPos.x - loadRadius ||
+                chunk.getChunkPos().y >= cameraChunkPos.y + loadRadius ||
+                chunk.getChunkPos().y < cameraChunkPos.y - loadRadius){
                 unload.add(chunk);
             }else{
                 if(chunk.getRawModel() == null){

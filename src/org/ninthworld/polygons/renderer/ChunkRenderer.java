@@ -151,7 +151,7 @@ public class ChunkRenderer implements IRenderer {
 
     private boolean isInViewFrustum(Chunk chunk, Frustum frustum){
         float x = chunk.getChunkPos().x * Chunk.CHUNK_SIZE;
-        float y = 0;
+        float y = -Chunk.CHUNK_HEIGHT/2;
         float z = chunk.getChunkPos().y * Chunk.CHUNK_SIZE;
 
         float size = Chunk.CHUNK_SIZE;
