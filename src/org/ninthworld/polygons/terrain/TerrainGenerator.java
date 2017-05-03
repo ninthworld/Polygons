@@ -37,14 +37,14 @@ public class TerrainGenerator {
         return new Seed(new Vector3f((float) gridX, 0f, (float) gridZ), biomeManager.getBiomeAt(gridX + gx * LOCAL_GRID_SIZE, gridZ + gz * LOCAL_GRID_SIZE));
     }
 
-    public HashMap<Biome, Double> getBiomesAt(double x, double z){
+    public HashMap<Biome, Double> getBiomesAt(double x, double z) {
         Vector3f pos = new Vector3f((float) x, 0, (float) z);
-        Vector3f localGridPos = new Vector3f((float) Math.floor(x/((double) LOCAL_GRID_SIZE)), 0f, (float) Math.floor(z/((double) LOCAL_GRID_SIZE)));
+        Vector3f localGridPos = new Vector3f((float) Math.floor(x / ((double) LOCAL_GRID_SIZE)), 0f, (float) Math.floor(z / ((double) LOCAL_GRID_SIZE)));
 
-        int r = 2;
+        int r = 3;
         List<Seed> seeds = new ArrayList<>();
-        for(int i=-r; i<=r; i++){
-            for(int j=-r; j<=r; j++){
+        for (int i = -r; i <= r; i++) {
+            for (int j = -r; j <= r; j++) {
                 Vector3f localPos = new Vector3f(localGridPos.x + i, 0, localGridPos.z + j);
                 Seed localSeed = getLocalSeed((int) localPos.x, (int) localPos.z);
                 Vector3f edge = biomeManager.getBiomeEdge(x, z);
@@ -54,35 +54,54 @@ public class TerrainGenerator {
                         localSeed.pos.z + localPos.z * LOCAL_GRID_SIZE + edge.z
                 );
 
-                if(Vector3f.sub(globalSeedPos, pos, null).length() <= LOCAL_GRID_SIZE * Math.sqrt(3)){
+                if (Vector3f.sub(globalSeedPos, pos, null).length() <= LOCAL_GRID_SIZE * Math.sqrt(3)) {
                     seeds.add(new Seed(globalSeedPos, localSeed.biome));
                 }
             }
         }
 
         HashMap<Biome, Double> biomes = new HashMap<>();
-        for(Seed seedA : seeds){
+        for (Seed seedA : seeds) {
             Vector3f subAPos = Vector3f.sub(seedA.pos, pos, null);
             List<Double> clamps = new ArrayList<>();
-            for(Seed seedB : seeds){
-                if(seedA != seedB){
+            for (Seed seedB : seeds) {
+                if (seedA != seedB) {
                     Vector3f ab = Vector3f.sub(seedA.pos, seedB.pos, null);
-                    double dotAB = Vector3f.dot(subAPos, ab)/Math.pow(ab.length(), 2);
+                    double dotAB = Vector3f.dot(subAPos, ab) / Math.pow(ab.length(), 2);
                     clamps.add(MathHelper.clamp(dotAB, 0, 1));
                 }
             }
 
             double min = 1;
-            for(Double clamp : clamps){
+            for (Double clamp : clamps) {
                 min = Math.min(min, 1 - clamp);
             }
 
             Biome biome = seedA.biome;
-            if(biomes.containsKey(biome)){
+            if (biomes.containsKey(biome)) {
                 double val = biomes.get(biome);
-                biomes.put(biome, MathHelper.clamp(val + min, 0, 1));
-            }else{
+//                biomes.put(biome, MathHelper.clamp(val + min, 0, 1));
+                biomes.put(biome, Math.max(min, val));
+            } else {
                 biomes.put(biome, min);
+            }
+        }
+
+        // Quadratic Biome Blending
+        for(Map.Entry<Biome, Double> entry : biomes.entrySet()){
+            entry.setValue(Math.pow(entry.getValue(), 2));
+        }
+
+        // Sum Biomes
+        double sum = 0.0;
+        for (Double val : biomes.values()) {
+            sum += val;
+        }
+
+        // Normalize Biomes
+        if(sum > 0){
+            for(Map.Entry<Biome, Double> entry : biomes.entrySet()){
+                entry.setValue(entry.getValue() / sum);
             }
         }
 
