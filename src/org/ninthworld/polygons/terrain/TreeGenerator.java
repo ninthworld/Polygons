@@ -17,16 +17,6 @@ public class TreeGenerator {
     private static final Vector3f leaves2 = new Vector3f(32/255f, 152/255f, 86/255f); // Highlight (88, 172, 146), Darkest: (16, 88, 56)
     private static final Vector3f trunk2 = new Vector3f(115/255f, 82/255f, 64/255f); // Darkest: (57, 57, 48)
 
-
-
-//    Vector3f pineLeaves = new Vector3f(47/255f, 160/255f, 66/255f);
-//    Vector3f pineTrunk = new Vector3f(85/255f, 78/255f, 54/255f);
-//
-//    Vector3f birchLeaves = new Vector3f(106/255f, 186/255f, 92/255f);
-//    Vector3f birchTrunk = new Vector3f(223/255f, 217/255f, 177/255f);
-//
-//    Vector3f treeLeaves = new Vector3f(73/255f, 162/255f, 44/255f);
-
     public static RawModel generatorRedwoodTree(){
         int trunkSections = 3;
         float[] trunkRadius = new float[]{3.5f, 3.0f, 2.0f, 1.8f};
